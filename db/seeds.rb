@@ -11,3 +11,13 @@
 5.times do |i|
   Category.create(name: "Category #{i + 1}", description: 'Lorem ipsum saves lives')
 end
+
+10.times do |i|
+  Product.create(
+    name: "Product #{i + 1}",
+    description: 'Lorem ipsum saves lives',
+    price: rand(1..100),
+    quantity: rand(1..100),
+    categories: Category.all.sample(rand(2..3))
+  )
+end
