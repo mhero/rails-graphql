@@ -16,4 +16,13 @@
 class Product < ApplicationRecord
   has_many :product_categories
   has_many :categories, through: :product_categories
+
+  scope :archived, -> { where.not(deleted_at: nil) }
+  scope :by_categories, ->(categories) { joins(:categories).where(categories: { name: categories }) }
+
+  def self.search_by(scope:, archived: false, categories: [], price_range: [])
+    scope = scope.by_categories(categories) if categories.any?
+    scope = scope.archived if archived
+    scope.order(created_at: :desc)
+  end
 end
