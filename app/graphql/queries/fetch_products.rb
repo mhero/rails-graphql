@@ -8,7 +8,6 @@ module Queries
     argument :price_filter, Types::Input::PriceFilterInputType, required: false
 
     def resolve(archived: false, categories: [], price_filter: nil)
-      debugger
       Product.search_by(
         scope: Product.includes(:categories),
         archived:,
