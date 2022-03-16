@@ -3,6 +3,6 @@
 module Types
   class NumberComparisonEnum < Types::BaseEnum
     value 'BIGGER_THAN', 'Bigger than'
-    value 'LOWER_THAN', 'Lower than'
+    value 'LESS_THAN', 'Lower than'
   end
 end
