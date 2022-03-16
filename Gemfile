@@ -39,6 +39,7 @@ gem 'bootsnap', require: false
 # gem "rack-cors"
 
 gem 'graphql', '1.11.6'
+gem "audited", "~> 5.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
