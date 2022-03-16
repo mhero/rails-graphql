@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchProduct < Queries::BaseQuery
-    type Types::ProductType, null: false
+  class ProductChanges < Queries::BaseQuery
+    type [Types::AuditType], null: false
     argument :id, ID, required: true
 
     def resolve(id:)
-      Product.find(id)
+      ::Product.find(id).audits
     rescue ActiveRecord::RecordNotFound => _e
       GraphQL::ExecutionError.new('Product does not exist.')
     rescue ActiveRecord::RecordInvalid => e

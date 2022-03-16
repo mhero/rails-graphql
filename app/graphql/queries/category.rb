@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module Queries
-  class FetchProductChanges < Queries::BaseQuery
-    type [Types::AuditType], null: false
+  class Category < Queries::BaseQuery
+    type Types::CategoryType, null: false
     argument :id, ID, required: true
 
     def resolve(id:)
-      Product.find(id).audits
+      ::Category.find(id)
     rescue ActiveRecord::RecordNotFound => _e
-      GraphQL::ExecutionError.new('Product does not exist.')
+      GraphQL::ExecutionError.new('Category does not exist.')
     rescue ActiveRecord::RecordInvalid => e
       GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
                                   " #{e.record.errors.full_messages.join(', ')}")
