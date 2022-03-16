@@ -24,7 +24,7 @@ class Product < ApplicationRecord
   scope :archived, -> { where.not(deleted_at: nil) }
   scope :by_categories, ->(categories) { joins(:categories).where(categories: { name: categories }) }
 
-  def self.search_by(scope:, archived: false, categories: [], price_range: [])
+  def self.search_by(scope:, archived: false, categories: [], price_filter: nil)
     scope = scope.by_categories(categories) if categories.any?
     scope = scope.archived if archived
     scope.order(created_at: :desc)

@@ -5,14 +5,15 @@ module Queries
     type [Types::ProductType], null: false
     argument :archived, Boolean, required: false
     argument :categories, [String], required: false
-    argument :price_range, [Float], required: false
+    argument :price_filter, Types::Input::PriceFilterInputType, required: false
 
-    def resolve(archived: false, categories: [], price_range: [])
+    def resolve(archived: false, categories: [], price_filter: nil)
+      debugger
       Product.search_by(
         scope: Product.includes(:categories),
         archived:,
         categories:,
-        price_range:
+        price_filter:
       )
     end
   end
