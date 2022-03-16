@@ -5,5 +5,6 @@ module Types
     field :add_category, mutation: Mutations::AddCategory
     field :add_product, mutation: Mutations::AddProduct
     field :delete_product, mutation: Mutations::DeleteProduct
+    field :update_product, mutation: Mutations::UpdateProduct
   end
 end
