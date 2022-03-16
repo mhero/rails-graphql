@@ -1,24 +1,52 @@
-# README
+## Dependencies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 3.1.0
+## Apps info
+ * Rails app runs in port 4567 (using this default config)
 
-Things you may want to cover:
+## Local Development
+## Full install
 
-* Ruby version
+1. Install dependencies
+```
+\curl -sSL https://get.rvm.io | bash
+rvm install "ruby-3.1.0"
+rvm use 3.1.0
+brew install postgresql
+```
 
-* System dependencies
+2. Clone repository
+3. cd into repository folder
 
-* Configuration
+4. Run in command line next:
 
-* Database creation
+```
+gem install bundler && bundle config jobs 7
+```
 
-* Database initialization
+5. Replace file with credentials of local postgres db(in development section)
+```
+database.yml
+```
 
-* How to run the test suite
+6. Run in command line next:
+```
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+7. Setup db:
+```
+rails db:create
+rails db:migrate
+```
 
-* Deployment instructions
+you can also seed data:
 
-* ...
+```
+rails db:seed
+```
+
+8. run backend (on aterminal window)
+```
+rails server --binding 0.0.0.0 --port 4567
+```
