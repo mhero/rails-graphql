@@ -7,6 +7,7 @@ module Types
 
     field :fetch_product, resolver: Queries::FetchProduct
     field :fetch_products, resolver: Queries::FetchProducts
+    field :fetch_product_changes, resolver: Queries::FetchProductChanges
 
     field :fetch_category, resolver: Queries::FetchCategory
     field :fetch_categories, resolver: Queries::FetchCategories
