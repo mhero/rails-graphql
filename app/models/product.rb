@@ -14,7 +14,7 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
-  audited only: [:price, :quantity]
+  audited only: %i[price quantity]
 
   has_many :product_categories
   has_many :categories, through: :product_categories
