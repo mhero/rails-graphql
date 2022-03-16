@@ -15,7 +15,7 @@
 #
 class Product < ApplicationRecord
   acts_as_paranoid
-  
+
   audited only: %i[price quantity]
 
   has_many :product_categories

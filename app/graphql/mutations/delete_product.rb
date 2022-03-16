@@ -4,10 +4,13 @@ module Mutations
   class DeleteProduct < Mutations::BaseMutation
     argument :id, ID, required: true
 
-    field :product, Types::ProductType, null: false
+    field :id, ID, null: true
 
     def resolve(id:)
-      Product.find(id).update(deleted_at: Time.zone.now)
+      Product.find(id).destroy
+      {
+        id:
+      }
     rescue ActiveRecord::RecordNotFound => _e
       GraphQL::ExecutionError.new('Product does not exist.')
     rescue ActiveRecord::RecordInvalid => e
